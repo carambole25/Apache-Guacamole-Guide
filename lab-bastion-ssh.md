@@ -178,6 +178,22 @@ sudo ufw default deny incoming
 sudo ufw allow from 10.3.209.216 to any port 22
 ```
 
+## Activer le multifacteur
+Il faut installer l'extension :
+```
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-auth-totp-1.5.5.tar.g
+tar -xzf guacamole-auth-totp-1.5.5.tar.gz
+sudo mv guacamole-auth-totp-1.5.5/guacamole-auth-totp-1.5.5.jar /etc/guacamole/extensions/
+sudo systemctl restart tomcat9
+```
+
+J'utilise FreeOTP sur mon portable pour scanner le qr code :
+
+![alt text](qr_code_otp.png "Parametre de connexion")
+
+Et maintenant à chaque connexion je dois utilisé un code à usage unique généré par l'OTP.
+
 ## Conclusion
 Utilisez des bastions c'est bien.
 
